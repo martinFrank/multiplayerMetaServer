@@ -11,3 +11,10 @@ java -jar multiplayermetaserver/multiplayerMetaServer-0.0.1.jar server ~/multipl
 
 curl http://192.168.0.69:8080/mapdata/download?mapid=templeTest
 curl -H "Accept: application/json" http://192.168.0.69:8080/playerMetaData
+
+
+docker build -t multiplayer/multiplayermetaserver:1.0-SNAPSHOT .
+docker run -p 8080:8080 multiplayer/multiplayermetaserver:1.0-SNAPSHOT
+
+
+
