@@ -33,7 +33,7 @@ server:
       port: 8080
     - type: https
       port: 8443
-      keyStorePath: multiplayermetaserver/example.keystore
+      keyStorePath: example.keystore
       keyStorePassword: example
     #this requires the alpn-boot library on the JVM's boot classpath
     #- type: h2
@@ -45,12 +45,12 @@ server:
       port: 8081
     - type: https
       port: 8444
-      keyStorePath: multiplayermetaserver/example.keystore
+      keyStorePath: example.keystore
       keyStorePassword: example
 
 mapConfigurations:
   - mapId: templeTest
-    filename: multiplayermetaserver/maps/TempleTest/TempleTest.zip
+    filename: maps/TempleTest/TempleTest.zip
     version: 0.0.1
 
 ##generell Raspi PWM Setting
