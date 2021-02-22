@@ -33,7 +33,7 @@ public class Players {
         players.add(player2);
     }
 
-    public Player get(String name, String pass) {
+    public Player getByUserPass(String name, String pass) {
         return players.stream().filter(p -> p.matchCredentials(name,pass)).findAny().orElse(null);
     }
 
@@ -46,5 +46,9 @@ public class Players {
             return playerData;
         }
         return null;
+    }
+
+    public Player getById(String playerId) {
+        return players.stream().filter(p -> p.uuid.equals(playerId)).findAny().orElse(null);
     }
 }

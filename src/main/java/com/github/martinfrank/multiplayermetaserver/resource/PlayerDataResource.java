@@ -1,12 +1,10 @@
 package com.github.martinfrank.multiplayermetaserver.resource;
 
 import com.codahale.metrics.annotation.Timed;
+import com.github.martinfrank.multiplayermetaserver.model.Player;
 import com.github.martinfrank.multiplayermetaserver.model.Players;
 import com.github.martinfrank.multiplayermetaserver.model.ServerCredentials;
-import com.github.martinfrank.multiplayerprotocol.meta.AreaServerCredentials;
-import com.github.martinfrank.multiplayerprotocol.meta.PlayerCredentials;
-import com.github.martinfrank.multiplayerprotocol.meta.PlayerData;
-import com.github.martinfrank.multiplayerprotocol.meta.PlayerMetaData;
+import com.github.martinfrank.multiplayerprotocol.meta.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,6 +70,27 @@ public class PlayerDataResource {
                 Response.noContent().status(Response.Status.ACCEPTED);
 
         return responseBuilder.build();
+    }
+
+    @POST
+    @Timed
+    @Path("/playerlogon")
+    public Response playerLogon(PlayerLogon playerLogon) {
+        LOGGER.debug("user AreaServerCredentials: {}", playerLogon.areaServerCredentials);
+        if(serverCredentials.areValid(playerLogon.areaServerCredentials)){
+            Player player = players.getById(playerLogon.playerId);
+            if(playerLogon.enter){
+                player.online = true;
+            }
+            if(playerLogon.leave){
+                player.online = false;
+            }
+            Response.ResponseBuilder responseBuilder =
+                    Response.noContent().status(Response.Status.ACCEPTED);
+            return responseBuilder.build();
+        }
+        throw new NotFoundException();
+
     }
 
 }

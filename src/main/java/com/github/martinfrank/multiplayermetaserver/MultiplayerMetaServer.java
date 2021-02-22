@@ -34,7 +34,7 @@ public class MultiplayerMetaServer extends Application<MultiplayerMetaServerConf
         ServerCredentials serverCredentials = new ServerCredentials(configuration);
         Players players = new Players();
 
-        final PlayerMetaDataResource playerMetaDataResource = new PlayerMetaDataResource(players);
+        final PlayerMetaDataResource playerMetaDataResource = new PlayerMetaDataResource(players, serverCredentials);
         environment.jersey().register(playerMetaDataResource);
 
         final PlayerDataResource playerDataResource = new PlayerDataResource(players, serverCredentials);

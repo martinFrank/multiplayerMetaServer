@@ -52,6 +52,7 @@ mapConfigurations:
   - mapId: templeTest
     filename: maps/TempleTest/TempleTest.zip
     version: 0.0.1
+    address: 192.168.0.69
 
 ##generell Raspi PWM Setting
 #pwmSetting:

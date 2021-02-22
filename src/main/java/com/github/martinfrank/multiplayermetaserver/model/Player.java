@@ -19,6 +19,6 @@ public class Player {
     }
 
     public boolean matchId(String playerId) {
-        return this.uuid.equals(playerId);
+        return uuid.equals(playerId);
     }
 }
